@@ -1,17 +1,95 @@
 <!DOCTYPE html>
+<script src="js/jquery.min.js"></script>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/jquery-ui.css" />
+    <script src="js/jquery-ui.js"></script>
     <link rel="stylesheet" href="css/bootstrap.css" />
-    <title>Document</title>
-    <style>
-        a { color: inherit; }
-    </style>
+    <link rel="stylesheet" href="css/font.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>E-Cab</title>
 </head>
 <body>
-    <a href="booking.html"> <button> Book a Ride </button> </a>
-    <a href="dashboard.html"> <button> Booked </button> </a>
+    <div class="container-fluid text-center"><h1 class="header">E-CAB</h1></div>
+    <a href="dashboard.html"><button class="btn btn-primary pull-right">Booked Rides </button></a>
+    <h2 class="text-center"> Cars List </h2>
+    <table class="table">
+        <tr>
+            <th> Name </th>
+            <th> Brand </th>
+            <th> Category </th>
+            <th> Model </th>
+        </tr>
+        <tr> 
+            <td> Civic </td>
+            <td> Honda </td>
+            <td> Business </td>
+            <td> 2012 </td>
+            <td><button class="btn btn-primary" id="btn"> Book </button> </td>
+        </tr>
+    </table>
+
+  <div id="dialog-form" style="visibility: hidden;" title="Booking Details">
+  <br /><p>All form fields are required.</p>
+  <br />
+  <form action="dashboard.html" method="post">
+      <fieldset>
+        <label for="pickup">Pickup</label>
+        <select name="pickup">
+            <option>Gulshan</option>
+            <option>Johar</option>
+            <option>Defence</option>
+        </select> <br /> <br />
+        <label for="destination">Destination</label>
+        <select name="destination">
+            <option>Gulshan</option>
+            <option>Johar</option>
+            <option>Defence</option>
+        </select>
+        <br /><br />
+        <label for="timing">Time</label>
+        <select name="timing">
+            <option>15 minutes</option>
+            <option>30 minutes</option>
+            <option>60 minutes</option>
+        </select>
+        <br /> <br />
+        <button class="btn btn-default">Ride Now</button>
+      </fieldset>
+    </form>
+</div>
+    <script >$(function() { 
+
+ dialog = $( "#dialog-form" ).dialog({
+      autoOpen: false,
+      height: 400,
+      width: 350,
+      modal: true,
+      buttons: {
+        // "Create an account": addUser,
+        Cancel: function() {
+          dialog.dialog( "close" );
+        }
+      },
+      close: function() {
+        form[ 0 ].reset();
+        allFields.removeClass( "ui-state-error" );
+      }
+    });
+ 
+    // form = dialog.find( "form" ).on( "submit", function( event ) {
+    //   event.preventDefault();
+    //   addUser();
+    // });
+ 
+    $( "#btn" ).button().on( "click", function() {
+        dialog.css({'visibility':'visible'});
+      dialog.dialog( "open" );
+    });
+  })
+</script>
 </body>
 </html>

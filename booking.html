@@ -8,12 +8,15 @@
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
     <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
     <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/font.css" />
+    <link rel="stylesheet" href="css/style.css" />
     <title>Document</title>
 </head>
 <body>
+    <div class="container-fluid text-center"><h1 class="header">E-CAB</h1></div>
     <h3> Cars List </h3>
     <table class="table">
-        <tr class="bg-primary">
+        <tr>
             <th> Name </th>
             <th> Brand </th>
             <th> Category </th>
@@ -27,24 +30,6 @@
             <td><button id="btn"> Book </button> </td>
         </tr>
     </table>
-    
-    <!--<div id="dialog" style="visibility:hidden;" title="Booking Details">
-    <form action="dashboard.html" method="post">
-        <label for="pickup">Pickup</label>
-        <select name="pickup">
-            <option>Gulshan</option>
-            <option>Johar</option>
-            <option>Defence</option>
-        </select> <br />
-        <label for="destination">Destination</label>
-        <select name="destination">
-            <option>Gulshan</option>
-            <option>Johar</option>
-            <option>Defence</option>
-        </select>
-        <input type="submit" value="Ride Now"/>
-    </form>
-  </div>-->
 
   <div id="dialog-form" style="visibility: hidden;" title="Booking Details">
   <p>All form fields are required.</p>
@@ -64,15 +49,19 @@
             <option>Defence</option>
         </select>
         <br />
-        <input type="submit" value="Ride Now" />
+        <label for="timing">Time</label>
+        <select name="timing">
+            <option>15 minutes</option>
+            <option>30 minutes</option>
+            <option>60 minutes</option>
+        </select>
+        <br />
+        <button class="btn btn-default">Ride Now</button>
       </fieldset>
     </form>
 </div>
     <script >$(function() { 
-//   $('#btn').click(function(){
-//       $("#dialog").dialog();
-//       $('#dialog').css({'visibility':'visible'});
-//   });
+
  dialog = $( "#dialog-form" ).dialog({
       autoOpen: false,
       height: 400,
@@ -90,10 +79,10 @@
       }
     });
  
-    form = dialog.find( "form" ).on( "submit", function( event ) {
-      event.preventDefault();
-      addUser();
-    });
+    // form = dialog.find( "form" ).on( "submit", function( event ) {
+    //   event.preventDefault();
+    //   addUser();
+    // });
  
     $( "#btn" ).button().on( "click", function() {
         dialog.css({'visibility':'visible'});
